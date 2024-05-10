@@ -1,7 +1,4 @@
 using LinearAlgebra
-# using Optimization
-# using Manifolds
-# using Manopt
 
 """
     matrix_karcher_mean_loss(A_list::Vector{Matrix{Float64}}, X::Matrix{Float64})
@@ -10,7 +7,9 @@ Compute the matrix Karcher mean loss, ``f(X; \\{A_i\\}_{i=1}^N) = \\sum_{i=1}^N 
 
 The matrix Karcher mean is the X which minimizes this for a given ``\\mathbb{A}``.
 
-`A_list`: list of matrices ``\\mathbb{A} = (A_1, ..., A_n) \\in \\mathbb{P}_m^n``
+`A_list`: list of matrices ``\\mathbb{A} = (A_1, ..., A_n)`` such that ``A_i \\in \\mathbb{P}_m``
+
+`X`: candidate matrix, ``X \\in \\mathbb{P}_m``
 """
 function matrix_karcher_mean_loss(A_list::Vector{Matrix{Float64}}, X::Matrix{Float64})
     sqrt_X = sqrt(X)

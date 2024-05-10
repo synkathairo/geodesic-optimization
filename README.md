@@ -1,10 +1,20 @@
 # geodesic-optimization
 
-Zhang and Sra describe methods for utilizing geodesically convex optimization[^1]. Also see Vishnoi's article[^2] which explains the topic at an introductory level.
+Zhang and Sra describe methods for utilizing first-order geodesically convex optimization[^1]. Also see Vishnoi's article[^2] which explains the topic at an introductory level.
+
+## The matrix Karcher mean problem
 
 Zhang and Sra experiment on the matrix Karcher mean problem[^1][^3], defined as $X^{\ast}$ such that 
-$$X^{\ast} = \argmin \sum_{i=1}^N (d(X,A_i))^2$$
-where $d(X,Y) = \lVert \log(X^{-1/2} Y X^{-1/2}) \rVert_F$ is the Riemannian metric, and each $A_i$ is a symmetric positive definite matrix.
+$$X^{\ast} = \arg \min_X \sum_{i=1}^N (d(X,A_i))^2$$
+where $d(X,Y) = \lVert \log(X^{-1/2} Y X^{-1/2}) \rVert_F$ is the Riemannian metric, and each $A_i$ is given a symmetric positive definite matrix.
+
+Full gradient descent is implemented, for the $X_{s+1}$ iteration, using the update step[^1]:
+$$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s \sum_{i=1}^N \log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right) X_s^{1/2}$$
+
+Or, in stochastic gradient descent, approximated using a random chosen $A_i$ where $i \in \{1,...,N\}$, as[^1]:
+$$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s N\log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right) X_s^{1/2}$$
+
+## Remarks
 
 Based on course project for [CSCI-GA.2945/ MATH-GA.2012 Convex and Nonsmooth Optimization](https://cs.nyu.edu/courses/spring24/CSCI-GA.2945-002/) at New York University.
 
