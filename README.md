@@ -2,8 +2,8 @@
 
 Zhang and Sra describe methods for utilizing geodesically convex optimization[^1]. Also see Vishnoi's article[^2] which explains the topic at an introductory level.
 
-Zhang and Sra experiment on the matrix Karcher mean problem[^1][^3], defined as $X^*$ such that 
-$$X^* = \argmin \sum_{i=1}^N (d(X,A_i))^2$$
+Zhang and Sra experiment on the matrix Karcher mean problem[^1][^3], defined as $X^{*}$ such that 
+$$X^{*} = \argmin \sum_{i=1}^N (d(X,A_i))^2$$
 where $d(X,Y) = \lVert \log(X^{-1/2} Y X^{-1/2}) \rVert_F$ is the Riemannian metric, and each $A_i$ is a symmetric positive definite matrix.
 
 Based on course project for [CSCI-GA.2945/ MATH-GA.2012 Convex and Nonsmooth Optimization](https://cs.nyu.edu/courses/spring24/CSCI-GA.2945-002/) at New York University.
