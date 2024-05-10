@@ -2,7 +2,7 @@
 
 Zhang and Sra describe methods for utilizing geodesically convex optimization[^1]. Also see Vishnoi's article[^2] which explains the topic at an introductory level.
 
-Zhang and Sra experiment on the matrix Karcher mean problem[^1, ^3], which is given here.
+Zhang and Sra experiment on the matrix Karcher mean problem[^1][^3], which is given here.
 
 Based on course project for [CSCI-GA.2945/ MATH-GA.2012 Convex and Nonsmooth Optimization](https://cs.nyu.edu/courses/spring24/CSCI-GA.2945-002/) at New York University.
 
