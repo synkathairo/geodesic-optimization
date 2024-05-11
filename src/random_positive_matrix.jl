@@ -36,6 +36,5 @@ function random_positive_matrix(n::Int, alg=0, par=10)
         global A
         A = X / norm(X)
     end
-    # print(A)
     return A
 end
