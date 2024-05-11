@@ -26,11 +26,13 @@ Xs = Matrix{Float64}(I, n, n)
 f_all = []
 x_all = []
 
-eta = 1 / (5 * N)
+# TODO set eta_s according to theorem 14 of Zhang and Sra paper
+
+eta_s = 1 / (5 * N)
 
 for i in range(1, max_iter)
     global Xs
-    Xs = matrix_karcher_mean_sgd_step(A_list, Xs, eta)
+    Xs = matrix_karcher_mean_sgd_step(A_list, Xs, eta_s)
     f = matrix_karcher_mean_loss(A_list, Xs)
     global f_all
     push!(f_all, f)

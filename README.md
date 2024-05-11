@@ -14,6 +14,10 @@ $$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s \sum_{i=1}^N \log (X_s^{1/2} A_i^{-1}X
 Or, in stochastic gradient descent, approximated using a random chosen $A_i$ where $i \in \{1,...,N\}$, as[^1]:
 $$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s N\log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right) X_s^{1/2}$$
 
+### Implementation
+
+The code is implemented as Julia functions in `src/`, whereas, in `matrix_karcher_mean_gd_step.jl` contains an implementation for a full gradient descent update step, and `matrix_karcher_mean_sgd_step.jl` has a stochastic gradient descent step, for the Karcher mean problem. The loop iterations to test the functions are in `test/`, implemented as `testgd.jl` and `testsgd.jl` respectively. These may be run directly, e.g. by running `julia testgd.jl`.
+
 ## Remarks
 
 Based on course project for [CSCI-GA.2945/ MATH-GA.2012 Convex and Nonsmooth Optimization](https://cs.nyu.edu/courses/spring24/CSCI-GA.2945-002/) at New York University.
