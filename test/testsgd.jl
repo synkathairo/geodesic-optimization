@@ -1,6 +1,7 @@
 using LinearAlgebra
 using Plots
 include("../src/random_positive_matrix.jl")
+include("../src/iter_method.jl")
 # include("../src/matrix_karcher_mean_gd_step.jl")
 include("../src/matrix_karcher_mean_sgd_step.jl")
 include("../src/matrix_karcher_mean_loss.jl")
@@ -23,22 +24,17 @@ end
 # ]
 Xs = Matrix{Float64}(I, n, n)
 
-f_all = []
-x_all = []
-
 # TODO set eta_s according to theorem 14 of Zhang and Sra paper
 
 eta_s = 1 / (5 * N)
 
-for i in range(1, max_iter)
-    global Xs
-    Xs = matrix_karcher_mean_sgd_step(A_list, Xs, eta_s)
-    f = matrix_karcher_mean_loss(A_list, Xs)
-    global f_all
-    push!(f_all, f)
-    global x_all
-    push!(x_all,Xs)
-end
+km_gd_step = Xs -> matrix_karcher_mean_sgd_step(A_list, Xs, eta)
+km_loss_step = Xs -> matrix_karcher_mean_loss(A_list, Xs)
+
+f_all, x_all = iter_method(km_gd_step, km_loss_step, Xs, max_iter)
 
 plotf = plot(f_all)
 savefig(plotf,"karchersgd.png")
+
+# plotx = plot(x_all)
+# savefig(plotx, "karchergd_xs.png")

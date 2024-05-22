@@ -3,7 +3,8 @@ using LinearAlgebra
 """
     matrix_karcher_mean_sgd_step()
 
-Matrix Karcher mean stochastic gradient descent method
+Matrix Karcher mean stochastic gradient descent method.
+Note that it differs from the (full) gradient descent method in that it uses a randomly chosen matrix `Ai` from `A_list` rather than the entire list.
 """
 function matrix_karcher_mean_sgd_step(A_list::Vector{Matrix{Float64}}, Xs, eta_s)
     N = size(A_list)[1]

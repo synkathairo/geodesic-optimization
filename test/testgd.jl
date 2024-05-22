@@ -1,6 +1,7 @@
 using LinearAlgebra
 using Plots
 include("../src/random_positive_matrix.jl")
+include("../src/iter_method.jl")
 include("../src/matrix_karcher_mean_gd_step.jl")
 # include("../src/matrix_karcher_mean_sgd_step.jl")
 include("../src/matrix_karcher_mean_loss.jl")
@@ -9,7 +10,7 @@ max_iter = 100
 N = 2
 n = 100
 Q = 100
-A_list = Vector{Matrix{Float64}}(undef,N)
+A_list = Vector{Matrix{Float64}}(undef, N)
 for i in range(1, N)
     A_i = random_positive_matrix(n, 2, Q)
     global A_list
@@ -23,20 +24,15 @@ end
 # ]
 Xs = Matrix{Float64}(I, n, n)
 
-f_all = []
-x_all = []
-
 eta = 1 / (5 * N)
 
-for i in range(1, max_iter)
-    global Xs
-    Xs = matrix_karcher_mean_gd_step(A_list, Xs, eta)
-    f = matrix_karcher_mean_loss(A_list, Xs)
-    global f_all
-    push!(f_all, f)
-    global x_all
-    push!(x_all,Xs)
-end
+km_gd_step = Xs -> matrix_karcher_mean_gd_step(A_list, Xs, eta)
+km_loss_step = Xs -> matrix_karcher_mean_loss(A_list, Xs)
+
+f_all, x_all = iter_method(km_gd_step, km_loss_step, Xs, max_iter)
 
 plotf = plot(f_all)
-savefig(plotf,"karchergd.png")
+savefig(plotf, "karchergd.png")
+
+# plotx = plot(x_all)
+# savefig(plotx, "karchergd_xs.png")
