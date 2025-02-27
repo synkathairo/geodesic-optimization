@@ -5,10 +5,7 @@ Zhang and Sra describe methods for optimizing on first-order geodesically convex
 ## First-order methods
 
 Consider an optimization problem of the form[^1]: 
-$$\begin{aligned}
-	& \min f(x) \\
-	& \text{subject to } x \in \mathcal{X} \subset \mathcal{M}
-\end{aligned}$$
+$$\min f(x) \quad \text{subject to } x \in \mathcal{X} \subset \mathcal{M}$$
 where $f: \mathcal{M} \to \mathbb{R} \cup \{\infty \}$, $f$ is $g$-convex, $\mathcal{X}$ is a geodesically convex set, and $\mathcal{M}$ is a Hadamard manifold.
 
 ### The matrix Karcher mean problem

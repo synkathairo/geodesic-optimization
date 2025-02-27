@@ -18,13 +18,11 @@ function random_positive_matrix(n::Int, alg=0, par=10)
     A = nothing
     if alg == 0
         W = randn(n, n)
-        global A
         A = sqrt(W * W')
         A = (A + A') / 2
     elseif alg == 1
         W = randn(n, n) - rand(n, n)
         W = W * W'
-        global A
         A = W / norm(W)
         A = (A + A') / 2
     elseif alg == 2
@@ -33,7 +31,6 @@ function random_positive_matrix(n::Int, alg=0, par=10)
         X = X - I * eigmin(X)
         X = X / norm(X)
         X = X + I / (par - 1)
-        global A
         A = X / norm(X)
     end
     return A
