@@ -22,11 +22,11 @@ where $d(X,Y) = \lVert \log(X^{-1/2} Y X^{-1/2}) \rVert_F$ is the Riemannian met
 
 Full gradient descent is implemented, for the $X_{s+1}$ iteration, using the update step[^1]:
 
-$$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s \sum_{i=1}^N \log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right) X_s^{1/2}$$
+$$X_{s+1} = X_s^{1/2} \exp {\left( -\eta_s \sum_{i=1}^N \log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right)} X_s^{1/2}$$
 
 Or, in stochastic gradient descent, approximated using a random chosen $A_i$ where $i \in \{1,...,N\}$, as[^1]:
 
-$$X_{s+1} = X_s^{1/2} \exp \left( -\eta_s N\log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right) X_s^{1/2}$$
+$$X_{s+1} = X_s^{1/2} \exp {\left( -\eta_s N\log (X_s^{1/2} A_i^{-1}X_s^{1/2}) \right)} X_s^{1/2}$$
 
 ### Implementation
 
