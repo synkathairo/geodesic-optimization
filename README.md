@@ -2,6 +2,8 @@
 
 Zhang and Sra describe methods for optimizing on first-order geodesically convex optimization[^1], which allow generalization to non-linear metric spaces. Also see Vishnoi's article[^2] which explains the topic at an introductory level.
 
+([View presentation](doc/final_project.pdf) for more details)
+
 ## First-order methods
 
 Consider an optimization problem of the form[^1]:
